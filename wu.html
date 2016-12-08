@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/wu.js"></script>	
+	</head>
+	<body>
+	<style type="text/css">
+	html{
+		/*background-image: url(img/bg.jpg);*/
+		background-size:cover;
+		background-repeat: no-repeat;
+	}
+	#kaishi{
+		position: relative;
+		margin: 100px auto;
+		width: 600px;
+		height: 600px;
+		/*overflow: hidden;*/
+		
+	}
+		#canvas{
+			border: 1px solid #000000;
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 100;
+			/*background: chocolate;*/
+			display: none;
+			
+		}
+		#canvas1{
+			/*border: 1px solid #000000;*/
+			width: 300px;
+			height: 300px;
+			position: absolute;
+			right: -300px;
+			top: 170px;
+			border-radius:50%;
+			display: none;
+		}
+		#canvas1 img{
+			width: 350px;
+		}
+		#canvas2 img{
+			width: 300px;
+		}
+			#canvas2{
+			width: 300px;
+			height: 300px;
+			position: absolute;
+			left: -300px;
+			top: 200px;
+			list-style-position: 1px 1px;
+			border-radius:50%;
+			display: none;
+		}
+		#jiemian{
+			width: 600px;
+			height: 600px;
+			position: absolute;
+			left: 0;
+			top: -40px;
+		}
+		#jiemian img{
+			height: 600px;
+			display: block;
+			margin-left: 40px;
+		}
+		.robot{
+			width: 175px;
+			height: 45px;
+			position: absolute;
+			left: 120px;
+			top: 205px;
+		}
+		.double{
+			width: 175px;
+			height: 45px;
+			position: absolute;
+			left: 120px;
+			top: 275px;
+		}
+		#yinliang{
+			width: 175px;
+			height: 45px;
+			position: absolute;
+			left: 120px;
+			top: 345px;
+		}
+		
+		#bai{
+			width: 400px;
+			height: 150px;
+			background: #eeeeee;
+			position: absolute;
+			left: 100px;
+			top: -150px;
+			z-index: 120;
+			opacity: 0.8;
+			display: none;
+		}
+		#bai ul:nth-of-type(2) span{
+			font-size: 24px;
+			color: #000000;
+			margin:0 50px ;
+			font-weight: bolder;
+		}
+		#bai ul:nth-of-type(3){
+			margin-top: 20px;
+		}
+		
+		#bai ul:nth-of-type(3) a{
+			font-size: 20px;
+			color: #000000;
+			text-decoration: none;
+			margin-left:35px ;
+			margin-right: 40px;
+			font-weight: bolder;
+		}
+		#hei{
+			width: 400px;
+			height: 150px;
+			background: #eeeeee;
+			position: absolute;
+			left: 100px;
+			top: -150px;
+			z-index: 120;
+			opacity: 0.8;
+			display: none;
+		}
+		#hei ul:nth-of-type(2) span{
+			font-size: 24px;
+			color: #000000;
+			margin:0 50px ;
+			font-weight: bolder;
+		}
+		#hei ul:nth-of-type(3){
+			margin-top: 20px;
+		}
+		
+		#hei ul:nth-of-type(3) a{
+			font-size: 20px;
+			color: #000000;
+			text-decoration: none;
+			margin-left:35px ;
+			margin-right: 40px;
+			font-weight: bolder;
+		}
+	.box{
+		transition:all 1s ease;
+		transform:scale(0,0);
+		width: 500px;
+		height: 500px;
+		position: absolute;
+		top: -100px;
+		left: -100px;
+		bottom: 0;
+		right: 0;
+		margin: auto;
+		cursor: pointer;
+		background: #fff;
+		z-index: 22;
+		box-shadow: 0 0 10px 1000px rgba(0,0,0,0.6); 
+	}
+	.box-xian{
+		transform:scale(1,1);
+	}
+		.box1{
+			animation: yin 1s linear;
+		}
+		@keyframes yin{
+			from{transform: scale(1);}
+			to{transform: scale(0);}
+		}
+		.box a{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			
+		}
+		@keyframes name{
+			from{transform: scale(0);}
+			to{transform: scale(1);}
+		}
+		#qipu{
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			position: absolute;
+			right: -150px;
+			top: 50px;
+			display: none;
+		}
+		#zan{
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			position: absolute;
+			left: -150px;
+			top: 50px;
+			display: none;
+		}
+		#jixu{
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			position: absolute;
+			left: -150px;
+			top: 100px;
+			display: none;
+		}
+		#chong{
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			position: absolute;
+			right: -150px;
+			top: 100px;
+			display: none;
+		}
+		#fanhui{
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			position: absolute;
+			left: -150px;
+			top: 150px;
+			display: none;
+		}
+	#close{
+		display:block;
+		border-radius: 50%;
+		position: absolute;
+		top:-30px;
+		right:-130px;
+		width: 30px;
+		height: 30px;
+		text-align: center;
+		line-height: 25px;
+		background: yellow;
+		z-index: 15000;
+	}
+	#guize{
+		position: absolute;
+		top: 50px;
+		left: 100px;
+		bottom: 0;
+		right: 0;
+		margin: auto;
+		z-index: 1;
+		cursor: pointer;
+		display: none;
+	}
+	#gui{
+			width: 70px;
+			height: 70px;
+			position: absolute;
+			left: 300px;
+			top: -20px;
+		}
+	h1,h2{
+		text-align: center;
+	}
+	h2{
+		margin-top: 180px;
+	}
+	.active{
+		transform:translateY(0);
+	}
+	#fan{
+		position: absolute;
+		left: 120px;
+		bottom: 100px;
+		color: #fff;
+	}
+	
+	</style>
+	<body>
+		<div id="kaishi">
+		<canvas id="canvas" width="600" height="600"></canvas>
+		<div id="jiemian">
+			<img src="img/fengmian.jpg" alt="" />
+		</div>	
+		<div class="robot"></div>
+		<div class="double red"></div>
+		<div id="yinliang"></div>
+		<div id='gui'></div>
+		<div id="guize">
+			<!--<p>     &nbsp;&nbsp;  对局开始时，先由执黑棋一方将一枚棋子落在天元点上，然后由执白棋一方在黑棋 
+			周围的交叉点上落子。但是，为了尊重对方和礼貌起见，持白棋的一方通常将盘面的第 
+			二着棋布在自己河界的一侧，即直止或斜止。此后黑白双方轮流落子，直到某一方首先 
+			在棋盘的横线、纵线或斜线上形成连续五子或五子以上〔仅对白棋而言〕，则该方就算 
+			获胜 
+			</p>-->
+			<img src="img/guize.jpg" alt="" />
+			<h2 id='fan'>关闭</h2>
+		</div>
+		<div id='bai' class='jieju'>
+			<ul>游戏结束</ul>
+			<ul><span>白棋</span><span>赢</span></ul>
+			<ul><a href="##" class='zai'>再来一局</a><a href="##" class='tui'>返回</a></ul>
+		</div>
+		<div id='hei' class='jieju'>
+			<ul>游戏结束</ul>
+			<ul><span>黑棋</span><span>赢</span></ul>
+			<ul><a href="##" class='zai'>再来一局</a><a href="##" class='tui'>返回</a></ul>
+		</div>
+		<div class="box">
+			<div id='close'>x</div>
+		</div>
+		<div id="zan">暂停</div>
+		<div id="jixu">继续</div>
+		<div id="chong">重新开始</div>
+		<div id="qipu">生成棋谱</div>
+		<div id="fanhui">退出</div>
+		<div id="canvas1"><img src="img/bai.png" alt="" /></div>
+		<div id="canvas2"><img src="img/hei.png" alt="" /></div>
+		<!--<canvas id="canvas1" width="200" height="200"></canvas>	
+		<canvas id="canvas2" width="200" height="200"></canvas>-->
+		</div>
+		
+		
+		
+			
+		<audio src="5390.mp3" id="audio"></audio>
+		<audio src="林海 - 琵琶语.mp3"  autoplay ="autoplay" loop="loop"></audio>
+		<img src="img/u=1968070919,1680584353&fm=21&gp=0.jpg"  id="qi" hidden>
+</html>
